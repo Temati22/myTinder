@@ -43,7 +43,6 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
     ul {
@@ -135,7 +134,6 @@
 
     }
 
-
     @keyframes fadeout {
         from {
             opacity: 1;
@@ -149,6 +147,5 @@
             opacity: 0.75;
         }
     }
-
 
 </style>

@@ -8,7 +8,7 @@
 
             <item v-for="item in itemsList" :key="item.index" :img="item.src.medium"
                   :description="item.photographer_url"
-                  :name="item.photographer" @touchmove="getTouchmove(event)"/>
+                  :name="item.photographer"/>
 
             <!--SKELETON PREVIEW-->
             <div v-if="itemsList.length == 0">
@@ -24,6 +24,8 @@
                 <button class="btn btn-red dislike" @click="dislike"></button>
                 <button class="btn btn-green like" @click="like"></button>
             </div>
+
+
         </div>
     </div>
 </template>
@@ -54,22 +56,6 @@
         },
         created() {
             this.getMoreItems();
-        },
-        mounted(){
-
-            // find the element that you want to drag.
-            let box = this.$el.querySelectorAll('.wrapper-card .card-item');
-
-            console.log(box);
-            /* listen to the touchmove event,
-            every time it fires, grab the location
-            of touch and assign it to box */
-
-            // box.addEventListener('touchmove', function(e) {
-            //     var touchLocation = e.targetTouches[0];
-            //     box.style.left = touchLocation.pageX + 'px';
-            //     box.style.top = touchLocation.pageY + 'px';
-            // });
         },
         methods: {
 
@@ -122,16 +108,7 @@
                     });
                     $this.page++;
                 });
-            },
-            getTouchmove(event){
-                // let $this = this;
-                console.log('touchmove');
-                console.log(event);
-                // var touchLocation = e.targetTouches[0];
-                // box.style.left = touchLocation.pageX + 'px';
-                // box.style.top = touchLocation.pageY + 'px';
             }
-
         }
     }
 </script>
