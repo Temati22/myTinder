@@ -9,6 +9,8 @@
             <!-- Item компонент с пропсами -->
             <div> <!-- обертка, чтобы небыло перерендера всей страницы-->
                 <item v-touch:swipe="touchHandler"
+                      v-touch:moving="movingHandler"
+                      v-touch:start="startHandler"
                       v-for="item in itemsList"
                       :key="item.index"
                       :img="item.src.medium"
@@ -115,13 +117,23 @@
                     $this.page++;
                 });
             },
-            touchHandler: function(direction){
+            touchHandler: function (direction) {
                 console.log(direction);
-                if(direction == 'right'){
+                if (direction == 'right') {
                     this.like();
-                }else{
+                } else {
                     this.dislike();
                 }
+            },
+            movingHandler: function (event) {
+                let elemX = event.touches[0].clientX,
+                    elemY = event.touches[0].clientY;
+
+                console.log(elemX);
+                console.log(elemY);
+            },
+            startHandler: function(){
+                console.log('start');
             }
         }
     }
