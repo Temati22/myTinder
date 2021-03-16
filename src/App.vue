@@ -7,13 +7,14 @@
         <div class="wrapper-card">
 
             <!-- Item компонент с пропсами -->
-            <item v-touch:swipe="touchHandler"
-                  v-for="item in itemsList"
-                  :key="item.index"
-                  :img="item.src.medium"
-                  :description="item.photographer_url"
-                  :name="item.photographer"/>
-
+            <div> <!-- обертка, чтобы небыло перерендера всей страницы-->
+                <item v-touch:swipe="touchHandler"
+                      v-for="item in itemsList"
+                      :key="item.index"
+                      :img="item.src.medium"
+                      :description="item.photographer_url"
+                      :name="item.photographer"/>
+            </div>
             <!--SKELETON PREVIEW-->
             <div v-if="itemsList.length == 0">
                 <figure class="card-item">
