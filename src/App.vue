@@ -6,7 +6,11 @@
 
         <div class="wrapper-card">
 
-            <item v-for="item in itemsList" :key="item.index" :img="item.src.medium"
+            <!-- Item компонент с пропсами -->
+            <item v-touch:swipe="touchHandler"
+                  v-for="item in itemsList"
+                  :key="item.index"
+                  :img="item.src.medium"
                   :description="item.photographer_url"
                   :name="item.photographer"/>
 
@@ -20,6 +24,7 @@
             </div>
 
 
+            <!-- Группа кнопок для работы с лайками -->
             <div class="block-buttons">
                 <button class="btn btn-red dislike" @click="dislike"></button>
                 <button class="btn btn-green like" @click="like"></button>
@@ -108,6 +113,14 @@
                     });
                     $this.page++;
                 });
+            },
+            touchHandler: function(direction){
+                console.log(direction);
+                if(direction == 'right'){
+                    this.like();
+                }else{
+                    this.dislike();
+                }
             }
         }
     }
